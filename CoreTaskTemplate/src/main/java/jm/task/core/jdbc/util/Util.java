@@ -1,5 +1,6 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -28,7 +29,7 @@ public class Util {
 
     public SessionFactory getSessionFactory() {
         Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(jm.task.core.jdbc.model.User.class);
+        configuration.addAnnotatedClass(User.class);
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/store?serverTimezone=Europe/Moscow&useSSL=false");
@@ -40,10 +41,7 @@ public class Util {
 
         SessionFactory sessionFactory;
         try {
-            sessionFactory = new org.hibernate.cfg.Configuration()
-                    .addProperties(properties)
-                    .addAnnotatedClass(jm.task.core.jdbc.model.User.class)
-                    .buildSessionFactory();
+            sessionFactory = configuration.addProperties(properties).buildSessionFactory();
             return sessionFactory;
         } catch (Throwable ex) {
             System.out.println("Не удалось подключиться к БД через Hibernate");
