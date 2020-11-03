@@ -15,7 +15,7 @@ public class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "12345678";
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -27,7 +27,7 @@ public class Util {
         return connection;
     }
 
-    public SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
 
