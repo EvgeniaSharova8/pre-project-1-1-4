@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserDaoHibernateImpl extends Util implements UserDao {
+public class UserDaoHibernateImpl implements UserDao {
 
-    SessionFactory sessionFactory = getSessionFactory();
+    SessionFactory sessionFactory = Util.getSessionFactory();
 
     public UserDaoHibernateImpl() {
 
